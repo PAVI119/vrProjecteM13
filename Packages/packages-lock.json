@@ -297,7 +297,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.xr.picoxr": {
-      "version": "file:C:/Users/Pau Vizcaino/Downloads/PICO Unity Integration SDK_250",
+      "version": "file:E:/Downloads/PICO Unity Integration SDK_250",
       "depth": 0,
       "source": "local",
       "dependencies": {
