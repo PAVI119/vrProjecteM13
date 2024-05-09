@@ -9,12 +9,19 @@ public class Ball : MonoBehaviour
     private Rigidbody rb;
     private bool isHeld = false;
     private Transform controllerTransform; // Se guarda la referencia al transform del controlador
+    private SphereCollider sphereCollider;
 
     // Inicialización
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         rb.collisionDetectionMode = CollisionDetectionMode.Continuous; // Mejor para objetos de alta velocidad.
+        rb.useGravity = true;
+        rb.mass = 0.62f; // Masa aproximada de una pelota de baloncesto
+        rb.drag = 0.1f; // Drag bajo para simular el aire
+        rb.angularDrag = 0.05f;
+        // Aplicar una pequeña fuerza inicial si es necesario para simular un lanzamiento o un bote inicial
+        
     }
 
     void Update()
@@ -42,6 +49,8 @@ public class Ball : MonoBehaviour
         transform.SetParent(null);
         isHeld = false;
         rb.isKinematic = false;
-        rb.velocity = throwForce; // Aquí puedes usar rb.velocity para mantener la velocidad del controlador al soltar
+        rb.velocity = throwForce;
+        rb.AddForce(throwForce, ForceMode.Impulse);
+        // Aquí puedes usar rb.velocity para mantener la velocidad del controlador al soltar
     }
 }
